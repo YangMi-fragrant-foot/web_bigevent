@@ -16,7 +16,6 @@ $(function(){
 
 
     // 从layui中获取form对象    
-    const url = 'http://www.liulongbin.top:3007'
     var form = layui.form
     var layer = layui.layer
     // 通过form.verify()函数自定义效验规则
@@ -41,7 +40,7 @@ $(function(){
         e.preventDefault();
         let data = {
             username :$('#form-reg [name=username]').val(),password : $('#form-reg [name=password]').val() }
-        $.post(`${url}/api/reguser`,data,
+        $.post(`/api/reguser`,data,
             function(res){
                 if(res.status !== 0) {
                     return  layer.msg(reg.message)
@@ -60,7 +59,7 @@ $(function(){
         e.preventDefault()
         $.ajax({
             method:'POST',
-            url:`${url}/api/login`,
+            url:`/api/login`,
             // 快速获取表单中的数据
             data:$(this).serialize(), //不熟悉  serialize
             success:function(res){
